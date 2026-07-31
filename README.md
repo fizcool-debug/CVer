@@ -31,8 +31,8 @@ Make sure you have [Node.js](https://nodejs.org/) installed (LTS recommended).
 ### Setup Steps
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/dietro/cver.git
-    cd cver
+    git clone https://github.com/fizcool-debug/CVer.git
+    cd CVer
     ```
 2.  **Install Dependencies**:
     ```bash

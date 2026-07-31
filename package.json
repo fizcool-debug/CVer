@@ -7,7 +7,7 @@
     "name": "Dietro",
     "email": "dietro@example.com"
   },
-  "homepage": "https://github.com/dietro/cver",
+  "homepage": "https://github.com/fizcool-debug/CVer",
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
