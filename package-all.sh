@@ -11,6 +11,12 @@ echo "========================================="
 # 1. Clean previous build folders
 rm -rf dist dist-electron
 
+# 1.5 Auto-install dependencies if node_modules is missing
+if [ ! -d "node_modules" ]; then
+  echo "node_modules not found. Installing dependencies first..."
+  npm install
+fi
+
 # 2. Build production assets
 npm run build
 
@@ -19,7 +25,7 @@ if [ "$1" == "--win" ]; then
   echo "Packaging for Windows (target: nsis)..."
   npx electron-builder --win
 else
-  echo "Packaging for Linux (targets: AppImage, deb)..."
+  echo "Packaging for Linux (targets: AppImage, deb, rpm)..."
   npx electron-builder --linux
 fi
 
