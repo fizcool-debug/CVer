@@ -8,6 +8,7 @@
     "email": "dietro@example.com"
   },
   "homepage": "https://github.com/dietro/cver",
+  "license": "MIT",
   "scripts": {
     "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
     "dev:vite": "vite",

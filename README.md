@@ -108,3 +108,10 @@ Double-click `CVer Setup 1.0.0.exe`. The setup wizard will launch:
 2.  The wizard will install CVer, register the program in your system, and automatically add:
     *   A **Desktop Shortcut**
     *   A **Start Menu Shortcut**
+
+---
+
+## 📄 License
+
+This project is open-source software licensed under the **[MIT License](LICENSE)**.
+
