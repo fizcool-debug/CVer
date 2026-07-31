@@ -95,9 +95,9 @@ This outputs the compiled files to the `dist-electron/` folder:
 ## 🪟 Windows (NSIS Setup Wizard)
 
 #### 1. Building the Installer
-If you are on Windows, or packaging using a Wine configuration on Linux, compile the installer by running:
-```bash
-./package-all.sh --win
+If you are on Windows, compile the installer by running the batch script in Command Prompt or PowerShell:
+```cmd
+package-all.bat --win
 ```
 This generates the Windows setup executable inside `dist-electron/`:
 *   `CVer Setup 1.0.0.exe`
