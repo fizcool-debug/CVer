@@ -11,7 +11,7 @@ export default function AtsFeedbackPanel({ result }) {
   };
 
   return (
-    <div className="form-card no-print" style={{ width: '100%', marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+    <div className="form-card no-print" style={{ width: '100%', marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '10px' }}>
         <h4 style={{ fontSize: '14px', fontWeight: 600 }}>ATS Scanner & Compatibility Engine</h4>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

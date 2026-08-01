@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../assets/icon.png';
 
-export default function CustomTitleBar() {
+export default function CustomTitleBar({ currentFileName }) {
   const [platform, setPlatform] = useState('win32');
 
   useEffect(() => {
@@ -19,6 +19,11 @@ export default function CustomTitleBar() {
       <div className="titlebar-brand" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <img src={logo} alt="CVer Logo" style={{ width: '16px', height: '16px', borderRadius: '3px' }} />
         <span style={{ fontWeight: 800, color: 'var(--accent-color)' }}>CV</span>er
+        {currentFileName && (
+          <span style={{ fontSize: '11px', fontWeight: 'normal', opacity: 0.7, paddingLeft: '8px', borderLeft: '1px solid var(--border-subtle)', marginLeft: '8px' }}>
+            {currentFileName}
+          </span>
+        )}
       </div>
       
       {/* Show custom controls only if NOT on macOS where system traffic lights are used */}

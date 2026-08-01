@@ -78,6 +78,64 @@ ipcMain.handle('export-pdf', async (event) => {
   }
 });
 
+// Save CV project configuration file (Save As)
+ipcMain.handle('save-project-file', async (event, dataString) => {
+  const { filePath } = await dialog.showSaveDialog(mainWindow, {
+    title: 'Save CV Project',
+    defaultPath: path.join(app.getPath('documents'), 'MyResume.cver'),
+    filters: [{ name: 'CVer Project Files', extensions: ['cver', 'json'] }]
+  });
+
+  if (!filePath) return { success: false, error: 'Cancelled' };
+
+  try {
+    fs.writeFileSync(filePath, dataString, 'utf-8');
+    return { success: true, path: filePath };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+});
+
+// Open existing CV project configuration file
+ipcMain.handle('open-project-file', async (event) => {
+  const { filePaths } = await dialog.showOpenDialog(mainWindow, {
+    title: 'Open CV Project',
+    filters: [{ name: 'CVer Project Files', extensions: ['cver', 'json'] }],
+    properties: ['openFile']
+  });
+
+  if (!filePaths || filePaths.length === 0) return { success: false, error: 'Cancelled' };
+
+  try {
+    const dataString = fs.readFileSync(filePaths[0], 'utf-8');
+    const data = JSON.parse(dataString);
+    return { success: true, data, path: filePaths[0] };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+});
+
+// Quick save/write to existing CV project path
+ipcMain.handle('write-project-file', async (event, filePath, dataString) => {
+  try {
+    fs.writeFileSync(filePath, dataString, 'utf-8');
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+});
+
+// Read specific project file path (for loading recents)
+ipcMain.handle('read-project-file', async (event, filePath) => {
+  try {
+    const dataString = fs.readFileSync(filePath, 'utf-8');
+    const data = JSON.parse(dataString);
+    return { success: true, data };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+});
+
 app.whenReady().then(() => {
   createWindow();
 

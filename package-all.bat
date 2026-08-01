@@ -17,12 +17,12 @@ if not exist node_modules (
 call npm run build
 
 :: 3. Package installers
-if "%1"=="--win" (
-    echo Packaging for Windows (target: nsis)...
-    npx electron-builder --win
-) else (
-    echo Packaging for Linux (targets: AppImage, deb, rpm)...
+if "%1"=="--linux" (
+    echo Packaging for Linux - targets: AppImage, deb, rpm...
     npx electron-builder --linux
+) else (
+    echo Packaging for Windows - target: nsis...
+    npx electron-builder --win
 )
 
 echo =========================================

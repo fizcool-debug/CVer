@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function FormSections({ activeTab, resumeData, setResumeData, jobDescription, setJobDescription }) {
+  const [skillsText, setSkillsText] = useState('');
+
+  useEffect(() => {
+    if (activeTab === 'skills') {
+      const parentVal = resumeData.skills ? resumeData.skills.join(', ') : '';
+      const cleanedParent = parentVal.split(',').map(s => s.trim()).filter(Boolean).join(',');
+      const cleanedLocal = skillsText.split(',').map(s => s.trim()).filter(Boolean).join(',');
+      if (cleanedParent !== cleanedLocal) {
+        setSkillsText(parentVal);
+      }
+    }
+  }, [resumeData.skills, activeTab]);
+
+  const handleSkillsChange = (e) => {
+    const val = e.target.value;
+    setSkillsText(val);
+    const skillsArr = val.split(',').map(s => s.trim()).filter(Boolean);
+    setResumeData({ ...resumeData, skills: skillsArr });
+  };
+
   const updatePersonal = (field, value) => {
     setResumeData({
       ...resumeData,
@@ -357,11 +377,6 @@ export default function FormSections({ activeTab, resumeData, setResumeData, job
   }
 
   if (activeTab === 'skills') {
-    const handleSkillsChange = (e) => {
-      const skillsArr = e.target.value.split(',').map(s => s.trim()).filter(s => s !== '');
-      setResumeData({ ...resumeData, skills: skillsArr });
-    };
-
     return (
       <div className="form-card">
         <h2>Skills & Technologies</h2>
@@ -372,7 +387,7 @@ export default function FormSections({ activeTab, resumeData, setResumeData, job
           <textarea 
             rows="6" 
             placeholder="JavaScript, TypeScript, React, Node.js, GraphQL, AWS, Docker, Git"
-            value={resumeData.skills ? resumeData.skills.join(', ') : ''} 
+            value={skillsText} 
             onChange={handleSkillsChange}
           />
         </div>

@@ -400,3 +400,321 @@ button {
     box-sizing: border-box !important;
   }
 }
+
+/* Welcome Screen Styling */
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 32px); /* Subtract Titlebar height */
+  padding: 40px;
+  background: radial-gradient(circle at top right, rgba(0, 120, 212, 0.08), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(96, 205, 255, 0.05), transparent 45%);
+  overflow-y: auto;
+}
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: 48px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.welcome-logo {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.logo-accent {
+  color: var(--accent-color);
+  background: linear-gradient(135deg, var(--accent-color), #00bcf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-tagline {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.welcome-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 960px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.action-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.welcome-card-btn {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow-fluent);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.welcome-card-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .welcome-card-btn:hover {
+    background-color: rgba(60, 60, 60, 0.8);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.welcome-card-btn.primary {
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.05), rgba(0, 120, 212, 0.02));
+  border: 1px solid rgba(0, 120, 212, 0.2);
+}
+
+.welcome-card-btn.primary:hover {
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.1), rgba(0, 120, 212, 0.05));
+  border-color: var(--accent-color);
+}
+
+.card-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: rgba(0, 120, 212, 0.1);
+  color: var(--accent-color);
+  margin-right: 20px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.welcome-card-btn:hover .card-icon-wrapper {
+  transform: scale(1.05);
+}
+
+.card-icon-wrapper.template {
+  background-color: rgba(255, 185, 0, 0.1);
+  color: #ffb900;
+}
+
+.card-text {
+  flex-grow: 1;
+}
+
+.card-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-text p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.chevron {
+  opacity: 0.3;
+  transition: transform 0.25s, opacity 0.2s;
+}
+
+.welcome-card-btn:hover .chevron {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Recents Styling */
+.welcome-recents {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border-subtle);
+  max-height: 420px;
+}
+
+.recents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.recent-item:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+@media (prefers-color-scheme: dark) {
+  .recent-item:hover {
+    background-color: rgba(55, 55, 55, 0.9);
+  }
+}
+
+.recent-clickable {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  flex-grow: 1;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.recent-icon {
+  color: var(--accent-color);
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.recent-details {
+  overflow: hidden;
+  text-align: left;
+}
+
+.recent-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recent-path {
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.btn-remove-recent {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.btn-remove-recent:hover {
+  color: var(--color-error) !important;
+  background: transparent !important;
+}
+
+.recents-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.empty-state-icon {
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+
+.recents-empty p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.empty-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .welcome-content {
+    grid-template-columns: 1fr;
+  }
+}
